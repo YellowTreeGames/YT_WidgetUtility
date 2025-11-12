@@ -1,7 +1,6 @@
 #if WITH_DEV_AUTOMATION_TESTS
 
 #include "Misc/AutomationTest.h"
-#include "Tests/AutomationEditorCommon.h"
 
 #include "MessageQueue/MessageQueueManager.h"
 #include "YT_Helpers/Public/YT_TestHelpers.h"
