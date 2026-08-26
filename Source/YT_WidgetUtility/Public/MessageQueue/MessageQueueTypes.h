@@ -6,50 +6,49 @@
 USTRUCT(BlueprintType, Blueprintable)
 struct FMessageQueueMessage
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
 
-/////////////////////
-// Core            //
-/////////////////////
+//////////
+// Core //
+//////////
 public:
-    /** Default constructor */
-    FMessageQueueMessage();
+	/** Default constructor */
+	FMessageQueueMessage();
 
-    /** Constructor with message text */
-    FMessageQueueMessage(const FString& InMessage);
+	/** Constructor with message text */
+	FMessageQueueMessage(const FString& InMessage);
 
-/////////////////////
-// Attributes      //
-/////////////////////
+////////////////
+// Attributes //
+////////////////
 public:
-    /** Unique identifier for this message */
-    UPROPERTY(BlueprintReadOnly, Category = "Message Queue")
-    FGuid MessageId;
+	/** Unique identifier for this message */
+	UPROPERTY(BlueprintReadOnly, Category = "Message Queue")
+	FGuid MessageId;
 
-    /** The message to display */
-    UPROPERTY(BlueprintReadWrite, Category = "Message Queue")
-    FString Message;
+	/** The message to display */
+	UPROPERTY(BlueprintReadWrite, Category = "Message Queue")
+	FString Message;
 
-/////////////////////
-// Methods         //
-/////////////////////
+/////////////
+// Methods //
+/////////////
 public:
-    /** Equality operator */
-    bool operator==(const FMessageQueueMessage& Other) const
-    {
-        return MessageId == Other.MessageId;
-    }
+	/** Equality operator */
+	bool operator==(const FMessageQueueMessage& Other) const
+	{
+		return MessageId == Other.MessageId;
+	}
 
-    /** Inequality operator */
-    bool operator!=(const FMessageQueueMessage& Other) const
-    {
-        return !(*this == Other);
-    }
+	/** Inequality operator */
+	bool operator!=(const FMessageQueueMessage& Other) const
+	{
+		return !(*this == Other);
+	}
 
-    /** Hash function for use in containers */
-    friend uint32 GetTypeHash(const FMessageQueueMessage& Message)
-    {
-        return GetTypeHash(Message.MessageId);
-    }
-
+	/** Hash function for use in containers */
+	friend uint32 GetTypeHash(const FMessageQueueMessage& Message)
+	{
+		return GetTypeHash(Message.MessageId);
+	}
 };

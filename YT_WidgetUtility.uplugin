@@ -4,9 +4,9 @@
 	"VersionName": "1.0",
 	"FriendlyName": "YT Widget Utility",
 	"Description": "A plugin for widget utility functions and helpers",
-	"Category": "Gameplay",
-	"CreatedBy": "Your Name",
-	"CreatedByURL": "",
+	"Category": "Yellow Tree",
+	"CreatedBy": "Yellow Tree Games",
+	"CreatedByURL": "https://www.yellowtreegames.com",
 	"DocsURL": "",
 	"MarketplaceURL": "",
 	"SupportURL": "",
@@ -18,16 +18,17 @@
 		{
 			"Name": "YT_Helpers",
 			"Enabled": true
+		},
+		{
+			"Name": "YT_Utility",
+			"Enabled": true
 		}
 	],
 	"Modules": [
 		{
 			"Name": "YT_WidgetUtility",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"AdditionalDependencies": [
-				"UMG"
-			]
+			"LoadingPhase": "Default"
 		}
 	]
 }

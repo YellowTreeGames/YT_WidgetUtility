@@ -8,20 +8,20 @@
 UCLASS()
 class YT_WIDGETUTILITY_API UYT_MessageQueueMessageWidget : public UUserWidget
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
 
-/////////////////////
-// Core            //
-/////////////////////
+//////////
+// Core //
+//////////
 public:
-    /** Constructor */
-    UYT_MessageQueueMessageWidget(const FObjectInitializer& ObjectInitializer);
+	/** Constructor */
+	UYT_MessageQueueMessageWidget(const FObjectInitializer& ObjectInitializer);
 
-/////////////////////
-// Attributes      //
-/////////////////////
+////////////////
+// Attributes //
+////////////////
 public:
-    /** The message details for this widget */
-    UPROPERTY(BlueprintReadWrite, meta = (ExposeOnSpawn), Category = "Message Queue")
-    FMessageQueueMessage MessageDetails;
+	/** The message details for this widget */
+	UPROPERTY(BlueprintReadWrite, meta = (ExposeOnSpawn), Category = "Message Queue")
+	FMessageQueueMessage MessageDetails;
 };
