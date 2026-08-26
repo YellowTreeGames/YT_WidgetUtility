@@ -76,3 +76,8 @@ void UYT_SettingWidget_Slider::OnSliderValueChanged(float NewValue)
 		}
 	}
 }
+
+UWidget* UYT_SettingWidget_Slider::GetFocusTarget() const
+{
+	return SettingSlider;
+}

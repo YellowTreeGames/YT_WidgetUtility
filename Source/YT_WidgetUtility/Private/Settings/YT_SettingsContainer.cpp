@@ -9,6 +9,28 @@ UYT_SettingsContainer::UYT_SettingsContainer(const FObjectInitializer& ObjectIni
 {
 }
 
+UWidget* UYT_SettingsContainer::NativeGetDesiredFocusTarget() const
+{
+	if (WidgetTree)
+	{
+		TArray<UWidget*> ChildWidgets;
+		WidgetTree->GetAllWidgets(ChildWidgets);
+
+		for (UWidget* Child : ChildWidgets)
+		{
+			if (UYT_SettingWidgetBase* SettingsWidget = Cast<UYT_SettingWidgetBase>(Child))
+			{
+				if (UWidget* FocusTarget = SettingsWidget->GetFocusTarget())
+				{
+					return FocusTarget;
+				}
+			}
+		}
+	}
+
+	return Super::NativeGetDesiredFocusTarget();
+}
+
 void UYT_SettingsContainer::ApplySettings()
 {
 	if (WidgetTree)

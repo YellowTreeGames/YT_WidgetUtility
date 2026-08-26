@@ -22,6 +22,10 @@
 		{
 			"Name": "YT_Utility",
 			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
+			"Enabled": true
 		}
 	],
 	"Modules": [

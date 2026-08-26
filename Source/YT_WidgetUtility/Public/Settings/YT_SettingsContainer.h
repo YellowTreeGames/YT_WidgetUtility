@@ -1,15 +1,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
+#include "CommonActivatableWidget.h"
 #include "YT_SettingsContainer.generated.h"
 
 /**
  * Container widget for a group of setting widgets.
  * Walks its own widget tree and applies every UYT_SettingWidgetBase found within it.
+ * Activatable so CommonUI/CommonInput route initial gamepad/keyboard focus to the first setting control.
  */
 UCLASS(Blueprintable, BlueprintType)
-class YT_WIDGETUTILITY_API UYT_SettingsContainer : public UUserWidget
+class YT_WIDGETUTILITY_API UYT_SettingsContainer : public UCommonActivatableWidget
 {
 	GENERATED_BODY()
 
@@ -18,6 +19,9 @@ class YT_WIDGETUTILITY_API UYT_SettingsContainer : public UUserWidget
 //////////
 public:
 	UYT_SettingsContainer(const FObjectInitializer& ObjectInitializer);
+
+protected:
+	virtual UWidget* NativeGetDesiredFocusTarget() const override;
 
 /////////////
 // Methods //

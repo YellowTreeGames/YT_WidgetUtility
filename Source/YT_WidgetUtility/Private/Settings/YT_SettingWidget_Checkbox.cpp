@@ -47,3 +47,8 @@ void UYT_SettingWidget_Checkbox::OnCheckboxStateChanged(bool bIsChecked)
 		BoolDef->SetPendingValue(bIsChecked);
 	}
 }
+
+UWidget* UYT_SettingWidget_Checkbox::GetFocusTarget() const
+{
+	return SettingCheckbox;
+}

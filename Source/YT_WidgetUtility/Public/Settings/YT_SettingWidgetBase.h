@@ -57,4 +57,8 @@ protected:
 	/** Called when the setting is officially applied */
 	UFUNCTION()
 	void OnSettingChanged(FGameplayTag SettingTag);
+
+public:
+	/** Returns the interactive control this setting wants focused when the settings menu activates, or nullptr if it has none bound. */
+	virtual UWidget* GetFocusTarget() const { return nullptr; }
 };

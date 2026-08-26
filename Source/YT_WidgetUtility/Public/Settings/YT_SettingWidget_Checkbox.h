@@ -35,4 +35,7 @@ protected:
 protected:
 	UFUNCTION()
 	void OnCheckboxStateChanged(bool bIsChecked);
+
+public:
+	virtual UWidget* GetFocusTarget() const override;
 };

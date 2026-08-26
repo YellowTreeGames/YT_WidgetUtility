@@ -35,4 +35,7 @@ protected:
 protected:
 	UFUNCTION()
 	void OnSelectionChanged(FString SelectedItem, ESelectInfo::Type SelectionType);
+
+public:
+	virtual UWidget* GetFocusTarget() const override;
 };

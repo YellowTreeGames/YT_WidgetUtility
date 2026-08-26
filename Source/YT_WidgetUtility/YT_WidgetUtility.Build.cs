@@ -24,6 +24,7 @@ public class YT_WidgetUtility : ModuleRules
 				"SlateCore",
 				"AudioWidgets",
 				"GameplayTags",
+				"CommonUI",
 				"YT_Utility"
 			}
 		);

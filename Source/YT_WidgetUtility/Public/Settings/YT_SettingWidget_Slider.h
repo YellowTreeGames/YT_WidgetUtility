@@ -39,4 +39,7 @@ protected:
 protected:
 	UFUNCTION()
 	void OnSliderValueChanged(float NewValue);
+
+public:
+	virtual UWidget* GetFocusTarget() const override;
 };

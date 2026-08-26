@@ -65,3 +65,8 @@ void UYT_SettingWidget_Dropdown::OnSelectionChanged(FString SelectedItem, ESelec
 		CategoricalDef->SetPendingIndex(NewIndex);
 	}
 }
+
+UWidget* UYT_SettingWidget_Dropdown::GetFocusTarget() const
+{
+	return SettingComboBox;
+}

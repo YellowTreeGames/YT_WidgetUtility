@@ -60,3 +60,8 @@ void UYT_SettingWidget_Audio::OnSliderValueChanged(float NewValue)
 		NumericDef->SetPendingValue(NewValue);
 	}
 }
+
+UWidget* UYT_SettingWidget_Audio::GetFocusTarget() const
+{
+	return AudioSlider;
+}
