@@ -4,6 +4,7 @@
 #include "Blueprint/WidgetTree.h"
 #include "GameUserSettings/YT_GameUserSettings.h"
 #include "Settings/YT_SettingsContainer.h"
+#include "UI/Button/YT_ButtonBase.h"
 
 UYT_SettingsScreen::UYT_SettingsScreen(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
@@ -15,6 +16,21 @@ bool UYT_SettingsScreen::NativeOnHandleBackAction()
 {
 	RequestClose();
 	return true;
+}
+
+void UYT_SettingsScreen::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	if (ApplyButton)
+	{
+		ApplyButton->OnClicked().AddUObject(this, &UYT_SettingsScreen::HandleApplyButtonClicked);
+	}
+
+	if (BackButton)
+	{
+		BackButton->OnClicked().AddUObject(this, &UYT_SettingsScreen::HandleBackButtonClicked);
+	}
 }
 
 void UYT_SettingsScreen::RequestSave()
@@ -57,4 +73,14 @@ void UYT_SettingsScreen::RequestClose()
 {
 	UE_LOG(LogYT_WidgetUtility_Settings, Verbose, TEXT("UYT_SettingsScreen::RequestClose - Broadcasting OnSettingsClosed"));
 	OnSettingsClosed.Broadcast();
+}
+
+void UYT_SettingsScreen::HandleApplyButtonClicked()
+{
+	RequestSave();
+}
+
+void UYT_SettingsScreen::HandleBackButtonClicked()
+{
+	RequestClose();
 }

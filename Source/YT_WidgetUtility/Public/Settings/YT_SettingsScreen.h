@@ -4,6 +4,8 @@
 #include "CommonActivatableWidget.h"
 #include "YT_SettingsScreen.generated.h"
 
+class UYT_ButtonBase;
+
 /**
  * Top-level settings screen hosting any number of UYT_SettingsContainer tabs found in its own
  * widget tree. Save applies every container it finds then saves once, so adding a tab means
@@ -24,6 +26,7 @@ public:
 
 protected:
 	virtual bool NativeOnHandleBackAction() override;
+	virtual void NativeConstruct() override;
 
 //////////////
 // Settings //
@@ -43,4 +46,17 @@ public:
 	/** Fires OnSettingsClosed. Bind to the Back button. */
 	UFUNCTION(BlueprintCallable, Category = "Settings")
 	void RequestClose();
+
+protected:
+	/** Optional Apply button; if bound, clicking it calls RequestSave. */
+	UPROPERTY(BlueprintReadOnly, Category = "Settings", meta = (BindWidgetOptional))
+	TObjectPtr<UYT_ButtonBase> ApplyButton;
+
+	/** Optional Back button; if bound, clicking it calls RequestClose. */
+	UPROPERTY(BlueprintReadOnly, Category = "Settings", meta = (BindWidgetOptional))
+	TObjectPtr<UYT_ButtonBase> BackButton;
+
+private:
+	void HandleApplyButtonClicked();
+	void HandleBackButtonClicked();
 };
