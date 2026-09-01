@@ -16,7 +16,7 @@
 	"Installed": false,
 	"Plugins": [
 		{
-			"Name": "YT_Helpers",
+			"Name": "YT_TestHelpers",
 			"Enabled": true
 		},
 		{

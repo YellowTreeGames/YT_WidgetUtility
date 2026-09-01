@@ -3,7 +3,7 @@
 #include "Misc/AutomationTest.h"
 
 #include "MessageQueue/YT_MessageQueueMessageWidget.h"
-#include "YT_Helpers/Public/YT_TestHelpers.h"
+#include "YT_TestHelpers/Public/YT_TestHelpers.h"
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FYTMessageQueueMessageWidgetInstantiationTest, "YT.WidgetUtility.MessageQueue.MessageWidget.Instantiation", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 bool FYTMessageQueueMessageWidgetInstantiationTest::RunTest(const FString& Parameters)

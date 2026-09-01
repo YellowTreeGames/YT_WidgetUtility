@@ -37,7 +37,7 @@ public class YT_WidgetUtility : ModuleRules
 				"Slate",
 				"SlateCore",
 				"DeveloperSettings",
-				"YT_Helpers"
+				"YT_TestHelpers"
 			}
 		);
 	}

@@ -4,7 +4,7 @@
 
 #include "MessageQueue/YT_MessageQueueWidget.h"
 #include "Components/VerticalBox.h"
-#include "YT_Helpers/Public/YT_TestHelpers.h"
+#include "YT_TestHelpers/Public/YT_TestHelpers.h"
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FYTMessageQueueWidgetInstantiationTest, "YT.WidgetUtility.MessageQueue.QueueWidget.Instantiation", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 bool FYTMessageQueueWidgetInstantiationTest::RunTest(const FString& Parameters)
