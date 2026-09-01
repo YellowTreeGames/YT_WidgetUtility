@@ -6,6 +6,7 @@
 
 class UCommonActivatableWidgetSwitcher;
 class UYT_ButtonBase;
+class UYT_SettingsScreen;
 
 /**
  * Pause menu widget for YT_WidgetUtility plugin.
@@ -86,4 +87,27 @@ private:
 	void HandleResumeButtonClicked();
 	void HandleExitToMenuButtonClicked();
 	void HandleExitDesktopButtonClicked();
+
+	//////////////
+	// Settings //
+	//////////////
+public:
+	/** Closes the Settings sub-screen if it is currently open. Returns true if it was open and closed. */
+	UFUNCTION(BlueprintCallable, Category = "Pause")
+	bool TryCloseSettings();
+
+protected:
+	/** Opens the Settings sub-screen over this menu's own buttons. */
+	UPROPERTY(BlueprintReadOnly, Category = "Pause", meta = (BindWidgetOptional))
+	TObjectPtr<UYT_ButtonBase> SettingsButton;
+
+	/** Settings sub-screen instance pushed/popped on ScreenSwitcher. */
+	UPROPERTY(BlueprintReadOnly, Category = "Pause", meta = (BindWidgetOptional))
+	TObjectPtr<UYT_SettingsScreen> SettingsScreen;
+
+private:
+	void HandleSettingsButtonClicked();
+
+	UFUNCTION()
+	void HandleSettingsClosed();
 };

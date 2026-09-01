@@ -5,6 +5,8 @@
 #include "YTWidget_MainMenu.generated.h"
 
 class UCommonActivatableWidgetSwitcher;
+class UYT_ButtonBase;
+class UYT_SettingsScreen;
 
 /**
  * Main menu widget for YT_WidgetUtility plugin
@@ -47,4 +49,27 @@ public:
 	/** Request exit from the main menu */
 	UFUNCTION(BlueprintCallable, Category = "Main Menu")
 	void RequestExit();
+
+	//////////////
+	// Settings //
+	//////////////
+public:
+	/** Closes the Settings sub-screen if it is currently open. Returns true if it was open and closed. */
+	UFUNCTION(BlueprintCallable, Category = "Main Menu")
+	bool TryCloseSettings();
+
+protected:
+	/** Opens the Settings sub-screen over this menu's own buttons. */
+	UPROPERTY(BlueprintReadOnly, Category = "Main Menu", meta = (BindWidgetOptional))
+	TObjectPtr<UYT_ButtonBase> SettingsButton;
+
+	/** Settings sub-screen instance pushed/popped on ScreenSwitcher. */
+	UPROPERTY(BlueprintReadOnly, Category = "Main Menu", meta = (BindWidgetOptional))
+	TObjectPtr<UYT_SettingsScreen> SettingsScreen;
+
+private:
+	void HandleSettingsButtonClicked();
+
+	UFUNCTION()
+	void HandleSettingsClosed();
 };
