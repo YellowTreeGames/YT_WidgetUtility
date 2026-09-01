@@ -7,6 +7,7 @@
 UYTWidget_Pause::UYTWidget_Pause(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+	bIsBackHandler = true;
 }
 
 void UYTWidget_Pause::NativeConstruct()
@@ -47,6 +48,12 @@ UWidget* UYTWidget_Pause::NativeGetDesiredFocusTarget() const
 	}
 
 	return Super::NativeGetDesiredFocusTarget();
+}
+
+bool UYTWidget_Pause::NativeOnHandleBackAction()
+{
+	RequestResume();
+	return true;
 }
 
 void UYTWidget_Pause::HandleResumeButtonClicked()

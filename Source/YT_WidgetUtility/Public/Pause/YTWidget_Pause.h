@@ -12,7 +12,9 @@ class UYT_SettingsScreen;
  * Pause menu widget for YT_WidgetUtility plugin.
  * Provides resume / exit-to-menu / exit-to-desktop, all optionally bound so a console
  * project can omit the desktop-only button.
- * Activatable so CommonUI/CommonInput route gamepad focus and back-action to it.
+ * Activatable so CommonUI/CommonInput route gamepad focus and back-action to it; bIsBackHandler
+ * defaults on so a gamepad Back action resumes play the same way the Resume button does. When
+ * the Settings sub-screen is open it is the topmost back-handler and takes the action first.
  */
 UCLASS(BlueprintType, Blueprintable)
 class YT_WIDGETUTILITY_API UYTWidget_Pause : public UCommonActivatableWidget
@@ -28,6 +30,7 @@ public:
 protected:
 	virtual void NativeConstruct() override;
 	virtual UWidget* NativeGetDesiredFocusTarget() const override;
+	virtual bool NativeOnHandleBackAction() override;
 
 ///////////
 // Pause //
