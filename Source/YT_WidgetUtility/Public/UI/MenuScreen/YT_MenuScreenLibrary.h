@@ -4,6 +4,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "YT_MenuScreenLibrary.generated.h"
 
+class UCommonActivatableWidget;
 class UCommonActivatableWidgetSwitcher;
 class UUserWidget;
 
@@ -30,4 +31,15 @@ public:
 	/** Returns Switcher to its base index (0), e.g. the menu's own button panel. */
 	UFUNCTION(BlueprintCallable, Category = "YT Helpers|Menu Screen")
 	static void PopSubScreen(UCommonActivatableWidgetSwitcher* Switcher);
+
+	/**
+	 * Binds OwningWidget to re-request focus once Switcher's animated transition back to index 0
+	 * actually completes. UCommonActivatableWidgetSwitcher activates/deactivates children
+	 * synchronously when the active index is set, but the transition animation - and so the base
+	 * content's actual place in the live widget path - only finishes asynchronously; CommonUI's
+	 * own focus restoration runs on the synchronous event and silently fails to find a path to the
+	 * not-yet-live widget. Call once per OwningWidget (e.g. from NativeConstruct).
+	 */
+	UFUNCTION(BlueprintCallable, Category = "YT Helpers|Menu Screen")
+	static void BindSubScreenFocusRestoration(UCommonActivatableWidgetSwitcher* Switcher, UCommonActivatableWidget* OwningWidget);
 };

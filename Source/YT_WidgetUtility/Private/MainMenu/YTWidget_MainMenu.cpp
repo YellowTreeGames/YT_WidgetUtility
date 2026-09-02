@@ -22,6 +22,8 @@ void UYTWidget_MainMenu::NativeConstruct()
 	{
 		SettingsScreen->OnSettingsClosed.AddDynamic(this, &UYTWidget_MainMenu::HandleSettingsClosed);
 	}
+
+	UYT_MenuScreenLibrary::BindSubScreenFocusRestoration(ScreenSwitcher, this);
 }
 
 void UYTWidget_MainMenu::RequestExit()

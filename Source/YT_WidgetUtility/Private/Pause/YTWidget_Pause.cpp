@@ -38,6 +38,8 @@ void UYTWidget_Pause::NativeConstruct()
 	{
 		SettingsScreen->OnSettingsClosed.AddDynamic(this, &UYTWidget_Pause::HandleSettingsClosed);
 	}
+
+	UYT_MenuScreenLibrary::BindSubScreenFocusRestoration(ScreenSwitcher, this);
 }
 
 UWidget* UYTWidget_Pause::NativeGetDesiredFocusTarget() const
