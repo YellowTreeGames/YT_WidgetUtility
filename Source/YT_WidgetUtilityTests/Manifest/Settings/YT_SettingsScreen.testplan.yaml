@@ -1,0 +1,26 @@
+class: UYT_SettingsScreen
+entries:
+  - function: RequestSave
+    tier: integration
+    verify: "Walks the widget tree for real UYT_SettingsContainer children and calls ApplySettings() on each, then calls SaveSettings() on UYT_GameUserSettings::GetYTGameUserSettings() when a settings instance exists; logs a warning and skips the save call when it doesn't."
+    status: planned
+
+  - function: RequestClose
+    tier: unit
+    verify: "Broadcasts OnSettingsClosed."
+    status: planned
+
+  - function: NativeOnHandleBackAction
+    tier: unit
+    verify: "Calls RequestClose and returns true, marking the back action as handled."
+    status: planned
+
+  - function: NativeConstruct
+    tier: integration
+    verify: "With real ApplyButton/BackButton collaborators bound, wires their OnClicked to HandleApplyButtonClicked/HandleBackButtonClicked."
+    status: planned
+
+  - function: HandleApplyButtonClicked / HandleBackButtonClicked
+    tier: unit
+    verify: "Trivial forwarders to RequestSave()/RequestClose(); no logic of their own beyond the binding covered by the NativeConstruct entry."
+    status: skipped

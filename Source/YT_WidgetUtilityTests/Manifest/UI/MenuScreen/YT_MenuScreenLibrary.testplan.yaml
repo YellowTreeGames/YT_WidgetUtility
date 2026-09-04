@@ -1,0 +1,11 @@
+class: UYT_MenuScreenLibrary
+entries:
+  - function: PushSubScreen
+    tier: integration
+    verify: "With real Switcher/SubScreen collaborators: adds SubScreen as a child of Switcher when it isn't already one, then activates it (sets Switcher's active index to SubScreen's child index) in both the newly-added and already-a-child cases; with a null Switcher or SubScreen, is a no-op."
+    status: planned
+
+  - function: PopSubScreen
+    tier: integration
+    verify: "With a real Switcher collaborator, sets its active widget index back to 0; with a null Switcher, is a no-op."
+    status: planned

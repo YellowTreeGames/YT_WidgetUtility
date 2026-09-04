@@ -1,0 +1,11 @@
+class: FMessageQueueMessage
+entries:
+  - function: Constructors
+    tier: unit
+    verify: "Default and text constructors both assign a valid, unique MessageId GUID; the text constructor also sets Message to the supplied string."
+    status: covered
+
+  - function: operator== / operator!= / GetTypeHash
+    tier: unit
+    verify: "Equality/inequality compare by MessageId only; two distinct instances hash and key correctly as distinct entries in a TMap."
+    status: covered

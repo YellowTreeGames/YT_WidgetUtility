@@ -1,0 +1,36 @@
+class: UYT_BrushCarousel
+entries:
+  - function: Next
+    tier: integration
+    verify: "With N slides assigned via SetSlides, advances CurrentIndex by 1 and wraps to 0 after the last slide; with zero slides, is a no-op and does not call RefreshDisplay's index math."
+    status: planned
+
+  - function: Previous
+    tier: integration
+    verify: "With N slides assigned, steps CurrentIndex back by 1 and wraps to N-1 before the first slide; with zero slides, is a no-op."
+    status: planned
+
+  - function: SetIndex
+    tier: integration
+    verify: "With N slides assigned, wraps NewIndex into [0, N) for both positive-overflow and negative input before refreshing the display; with zero slides, is a no-op."
+    status: planned
+
+  - function: SetSlides
+    tier: integration
+    verify: "Replaces Slides with InSlides, resets CurrentIndex to 0, and refreshes the display — including when InSlides is empty."
+    status: planned
+
+  - function: NativeConstruct
+    tier: integration
+    verify: "With real NextButton/PrevButton collaborators bound, wires their OnClicked to HandleNextClicked/HandlePrevClicked respectively, then calls RefreshDisplay to initialize the bound DisplayImage/IndexText/button-enabled state."
+    status: planned
+
+  - function: RefreshDisplay (via Next/Previous/SetIndex/SetSlides)
+    tier: integration
+    verify: "With real DisplayImage/IndexText/NextButton/PrevButton collaborators bound: with slides present, sets DisplayImage's brush to Slides[CurrentIndex] and visibility to SelfHitTestInvisible, IndexText to 'CurrentIndex+1 / Count', and both nav buttons enabled only when Count > 1; with zero slides, blanks/hides DisplayImage, clears IndexText, and disables both nav buttons. Always broadcasts OnIndexChanged with CurrentIndex."
+    status: planned
+
+  - function: HandleNextClicked / HandlePrevClicked
+    tier: unit
+    verify: "Trivial forwarders to Next()/Previous(); no logic of their own beyond the delegate binding covered by the NativeConstruct entry."
+    status: skipped

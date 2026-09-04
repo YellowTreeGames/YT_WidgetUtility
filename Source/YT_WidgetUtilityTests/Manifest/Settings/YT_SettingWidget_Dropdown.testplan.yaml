@@ -1,0 +1,21 @@
+class: UYT_SettingWidget_Dropdown
+entries:
+  - function: NativeConstruct
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Categorical and a real bound SettingComboBox, repopulates the combo box's options from the definition's Options, selects the option at the definition's pending index when that index is valid, and (re)binds OnSelectionChanged without double-binding."
+    status: planned
+
+  - function: UpdateWidgetVisuals_Implementation
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Categorical and SettingComboBox bound, selects the option at the definition's current pending index when that index is valid against Options; leaves selection unchanged when the index is out of range."
+    status: planned
+
+  - function: OnSelectionChanged
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Categorical, reads SettingComboBox's newly selected index and pushes it into the definition via SetPendingIndex."
+    status: planned
+
+  - function: NativeDestruct
+    tier: unit
+    verify: "Unbinds OnSelectionChanged from OnSelectionChanged handler when SettingComboBox is bound; no logic beyond the unbind."
+    status: skipped

@@ -1,0 +1,21 @@
+class: UYT_SettingWidget_Checkbox
+entries:
+  - function: NativeConstruct
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Bool and a real bound SettingCheckbox, initializes the checkbox to the definition's pending value and (re)binds OnCheckStateChanged to OnCheckboxStateChanged without double-binding."
+    status: planned
+
+  - function: UpdateWidgetVisuals_Implementation
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Bool and SettingCheckbox bound, sets the checkbox's checked state to the definition's current pending value."
+    status: planned
+
+  - function: OnCheckboxStateChanged
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Bool, pushes bIsChecked into the definition's pending value via SetPendingValue."
+    status: planned
+
+  - function: NativeDestruct
+    tier: unit
+    verify: "Unbinds OnCheckStateChanged from OnCheckboxStateChanged when SettingCheckbox is bound; no logic beyond the unbind."
+    status: skipped

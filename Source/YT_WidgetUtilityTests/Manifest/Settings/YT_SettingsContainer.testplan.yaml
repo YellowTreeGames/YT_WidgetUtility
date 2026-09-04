@@ -1,0 +1,11 @@
+class: UYT_SettingsContainer
+entries:
+  - function: ApplySettings
+    tier: integration
+    verify: "Walks the widget tree for real UYT_SettingWidgetBase children with a non-null SettingDefinition and calls Apply(GetOwningPlayer()) on each definition; children without a SettingDefinition, or that aren't UYT_SettingWidgetBase, are skipped."
+    status: planned
+
+  - function: NativeGetDesiredFocusTarget
+    tier: integration
+    verify: "Returns the first non-null GetFocusTarget() found while walking real UYT_SettingWidgetBase children in the widget tree; falls back to Super::NativeGetDesiredFocusTarget() when none of them provide a focus target (or the widget tree is empty)."
+    status: planned

@@ -1,0 +1,21 @@
+class: UYT_MessageQueueWidget
+entries:
+  - function: HandleMessageInFocus
+    tier: integration
+    verify: "With a real MessageContainer panel and MessageWidgetClass bound, creates a message widget, sets its MessageDetails, adds it as a child of MessageContainer, and tracks it in ActiveMessageWidgets keyed by MessageId; with MessageContainer or MessageWidgetClass null, is a no-op."
+    status: covered
+
+  - function: HandleMessageOutFocus
+    tier: integration
+    verify: "Removes the tracked widget for Message's MessageId from MessageContainer and ActiveMessageWidgets when present; is a no-op (no crash) when the MessageId isn't tracked."
+    status: covered
+
+  - function: SetMessageQueueManager / BindManagerEvents
+    tier: integration
+    verify: "Assigns MessageQueueManager and binds its OnMessageInFocus/OnMessageOutFocus delegates to HandleMessageInFocus/HandleMessageOutFocus so events raised on a real manager instance reach the widget."
+    status: planned
+
+  - function: NativeConstruct
+    tier: unit
+    verify: "Trivial pass-through that calls BindManagerEvents (covered by that entry) after Super::NativeConstruct."
+    status: skipped

@@ -1,0 +1,6 @@
+class: UYTWidget_MainMenu
+entries:
+  - function: RequestExit
+    tier: unit
+    verify: "Broadcasts OnExitRequested."
+    status: planned

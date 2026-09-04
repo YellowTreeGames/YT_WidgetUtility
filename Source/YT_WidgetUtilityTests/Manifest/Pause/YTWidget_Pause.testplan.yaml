@@ -1,0 +1,36 @@
+class: UYTWidget_Pause
+entries:
+  - function: RequestResume
+    tier: unit
+    verify: "Broadcasts OnResumeRequested."
+    status: planned
+
+  - function: RequestExitToMenu
+    tier: unit
+    verify: "Broadcasts OnExitToMenuRequested."
+    status: planned
+
+  - function: RequestExitDesktop
+    tier: unit
+    verify: "Broadcasts OnExitDesktopRequested."
+    status: planned
+
+  - function: NativeConstruct
+    tier: integration
+    verify: "With real ResumeButton/ExitToMenuButton/ExitDesktopButton collaborators bound (each optional), wires each one's OnClicked to its matching HandleXButtonClicked; a button left unbound is simply not wired, with no error."
+    status: planned
+
+  - function: NativeGetDesiredFocusTarget
+    tier: integration
+    verify: "Returns ResumeButton when it's bound; falls back to Super::NativeGetDesiredFocusTarget() when it isn't."
+    status: planned
+
+  - function: NativeOnHandleBackAction
+    tier: unit
+    verify: "Calls RequestResume and returns true, marking the back action as handled."
+    status: planned
+
+  - function: HandleResumeButtonClicked / HandleExitToMenuButtonClicked / HandleExitDesktopButtonClicked
+    tier: unit
+    verify: "Trivial forwarders to RequestResume/RequestExitToMenu/RequestExitDesktop; no logic of their own beyond the entries above."
+    status: skipped

@@ -74,5 +74,3 @@ Plugins/**/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-# Test manifests (local planning artifacts, not yet committed)
-*.testplan.yaml

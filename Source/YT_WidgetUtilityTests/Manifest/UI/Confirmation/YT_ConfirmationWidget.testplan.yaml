@@ -1,0 +1,11 @@
+class: UYT_ConfirmationWidget
+entries:
+  - function: SetupConfirmation_Implementation
+    tier: integration
+    verify: "Stores Config.ContextToken as ActiveContextToken and Receiver as ActiveReceiver, then calls the OnConfirmationSetup BlueprintImplementableEvent (native-side state only; the event body itself has no C++ implementation to verify)."
+    status: planned
+
+  - function: HandleChoice
+    tier: integration
+    verify: "With ActiveReceiver a real UObject implementing IYT_ConfirmationReceiverInterface, calls ReceiveConfirmationResult_Implementation directly (per parent CLAUDE.md's Execute_ vs _Implementation rule for raw C++ test instances) with ActiveContextToken and ChoiceId, then removes this widget from its parent; with no valid/implementing receiver, skips the notification but still removes itself from its parent."
+    status: planned
