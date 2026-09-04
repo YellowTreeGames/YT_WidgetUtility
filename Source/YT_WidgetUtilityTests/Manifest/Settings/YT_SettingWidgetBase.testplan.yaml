@@ -1,0 +1,31 @@
+class: UYT_SettingWidgetBase
+entries:
+  - function: NativeConstruct
+    tier: integration
+    verify: "Binds OnSettingChanged/OnSettingPendingChanged to a real UYT_GameUserSettings instance's delegates (removing any prior binding first to avoid double-binding), then calls UpdateDisplayName and UpdateWidgetVisuals once to initialize."
+    status: planned
+
+  - function: NativeDestruct
+    tier: integration
+    verify: "Unbinds this widget's handlers from UYT_GameUserSettings's OnSettingChanged/OnSettingPendingChanged delegates."
+    status: planned
+
+  - function: UpdateDisplayName
+    tier: integration
+    verify: "With both DisplayNameText and SettingDefinition bound, sets DisplayNameText's text to SettingDefinition->DisplayName; no-ops when either is unbound."
+    status: planned
+
+  - function: OnSettingPendingChanged / OnSettingChanged
+    tier: integration
+    verify: "Calls UpdateWidgetVisuals only when SettingTag matches SettingDefinition->SettingTag; ignores changes to unrelated settings."
+    status: planned
+
+  - function: SynchronizeProperties
+    tier: unit
+    verify: "Editor-time refresh that forwards to UpdateDisplayName; no logic beyond that entry."
+    status: skipped
+
+  - function: UpdateWidgetVisuals_Implementation
+    tier: unit
+    verify: "Base implementation is intentionally empty; concrete visual sync is owned by each subclass override."
+    status: skipped

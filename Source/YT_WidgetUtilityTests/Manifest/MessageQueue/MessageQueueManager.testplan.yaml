@@ -1,0 +1,21 @@
+class: UMessageQueueManager
+entries:
+  - function: CreateMessage
+    tier: unit
+    verify: "Static factory returns an FMessageQueueMessage constructed from MessageText, with a valid auto-generated MessageId."
+    status: covered
+
+  - function: AddMessage
+    tier: integration
+    verify: "Appends Message to MessageQueue then immediately calls ProcessQueue; with an existing test-world outer so GetWorld() resolves for the internal timer."
+    status: covered
+
+  - function: ProcessQueue
+    tier: integration
+    verify: "With InFocusMessages below MaxMessagesInFocus and MessageQueue non-empty, dequeues the front message, adds it to InFocusMessages, broadcasts OnMessageInFocus, and starts its focus timer; with InFocusMessages at MaxMessagesInFocus or MessageQueue empty, is a no-op."
+    status: covered
+
+  - function: OnMessageFocusTimeout
+    tier: integration
+    verify: "Removes Message from InFocusMessages and its timer handle, broadcasts OnMessageOutFocus, then calls ProcessQueue so a queued message (if any) moves into focus — verified across a full multi-message queue drain sequence."
+    status: covered

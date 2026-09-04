@@ -1,0 +1,21 @@
+class: UYT_SettingWidget_Slider
+entries:
+  - function: NativeConstruct
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Numeric and a real bound SettingSlider, applies MinValue/MaxValue/StepSize and the definition's pending value to the slider, and (re)binds OnValueChanged without double-binding."
+    status: planned
+
+  - function: UpdateWidgetVisuals_Implementation
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Numeric, SettingSlider bound, sets the slider to the definition's pending value; with ValueText also bound, formats it as an integer when bIsInteger, otherwise as a float."
+    status: planned
+
+  - function: OnSliderValueChanged
+    tier: integration
+    verify: "With StepSize > 0, rounds NewValue to the nearest step before pushing it into the definition via SetPendingValue, and re-runs UpdateWidgetVisuals when the snapped value differs from the raw slider value; with StepSize <= 0, pushes NewValue unchanged and does not re-sync visuals."
+    status: planned
+
+  - function: NativeDestruct
+    tier: unit
+    verify: "Unbinds OnValueChanged from OnSliderValueChanged when SettingSlider is bound; no logic beyond the unbind."
+    status: skipped

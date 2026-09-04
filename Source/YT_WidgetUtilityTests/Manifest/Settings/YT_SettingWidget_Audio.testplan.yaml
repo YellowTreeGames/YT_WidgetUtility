@@ -1,0 +1,21 @@
+class: UYT_SettingWidget_Audio
+entries:
+  - function: NativeConstruct
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Numeric and a real bound AudioSlider, sets the slider's normalized Value to the definition's pending value and (re)binds OnValueChanged without double-binding."
+    status: planned
+
+  - function: UpdateWidgetVisuals_Implementation
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Numeric, AudioSlider bound, sets its Value to the definition's pending value; with ValueText also bound, formats it as a rounded whole-number percentage."
+    status: planned
+
+  - function: OnSliderValueChanged
+    tier: integration
+    verify: "With SettingDefinition a UYT_SettingDef_Numeric, pushes the already-normalized NewValue directly into the definition via SetPendingValue (no step-size snapping, unlike YT_SettingWidget_Slider)."
+    status: planned
+
+  - function: NativeDestruct
+    tier: unit
+    verify: "Unbinds OnValueChanged from OnSliderValueChanged when AudioSlider is bound; no logic beyond the unbind."
+    status: skipped

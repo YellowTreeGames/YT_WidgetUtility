@@ -1,0 +1,11 @@
+class: UYT_ButtonBase
+entries:
+  - function: SetButtonText
+    tier: integration
+    verify: "Sets ButtonText to InText; with a real bound ButtonLabel collaborator, also pushes InText to its displayed text; with ButtonLabel unbound, updates ButtonText only and does not crash."
+    status: planned
+
+  - function: NativePreConstruct
+    tier: unit
+    verify: "Trivial forwarder that calls SetButtonText(ButtonText); no logic of its own beyond the entry above."
+    status: skipped
